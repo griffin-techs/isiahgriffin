@@ -27,23 +27,23 @@ const Hero = () => {
         <div className="animate-fade-in">
           {/* Greeting */}
           <p className="text-lg sm:text-xl text-muted-foreground mb-4 font-mono">
-            Hi there, I'm
+            Hello, I'm
           </p>
           
           {/* Name */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">
-            <span className="text-gradient">Alex Johnson</span>
+            <span className="text-gradient typing-animation">Liam Ribe</span>
           </h1>
           
           {/* Role */}
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-semibold text-foreground/90 mb-6">
-            Full Stack Developer
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-semibold text-foreground/90 mb-6 typing-subtitle">
+            Software Developer
           </h2>
           
           {/* Tagline */}
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-            I craft exceptional digital experiences with modern technologies. 
-            Passionate about creating scalable web applications that make a difference.
+            Crafting innovative software solutions with cutting-edge technologies. 
+            Specializing in full-stack development, cloud architecture, and scalable systems.
           </p>
           
           {/* CTA Buttons */}
@@ -68,21 +68,21 @@ const Hero = () => {
           {/* Social Links */}
           <div className="flex justify-center gap-6 mb-12">
             <a 
-              href="https://github.com" 
+              href="https://github.com/liamribe" 
               className="text-muted-foreground hover:text-primary transition-colors duration-200 hover-glow"
               aria-label="GitHub Profile"
             >
               <Github size={24} />
             </a>
             <a 
-              href="https://linkedin.com" 
+              href="https://linkedin.com/in/liamribe" 
               className="text-muted-foreground hover:text-primary transition-colors duration-200 hover-glow"
               aria-label="LinkedIn Profile"
             >
               <Linkedin size={24} />
             </a>
             <a 
-              href="mailto:alex@example.com" 
+              href="mailto:liam@liamribe.dev" 
               className="text-muted-foreground hover:text-primary transition-colors duration-200 hover-glow"
               aria-label="Email Contact"
             >

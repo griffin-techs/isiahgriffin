@@ -53,19 +53,19 @@ const Contact = () => {
     {
       icon: <Mail className="w-5 h-5" />,
       label: 'Email',
-      value: 'alex@example.com',
-      link: 'mailto:alex@example.com'
+      value: 'liam@liamribe.dev',
+      link: 'mailto:liam@liamribe.dev'
     },
     {
       icon: <Phone className="w-5 h-5" />,
       label: 'Phone',
-      value: '+1 (555) 123-4567',
-      link: 'tel:+15551234567'
+      value: '+1 (555) 987-6543',
+      link: 'tel:+15559876543'
     },
     {
       icon: <MapPin className="w-5 h-5" />,
       label: 'Location',
-      value: 'San Francisco, CA',
+      value: 'Seattle, WA',
       link: '#'
     }
   ];
@@ -74,20 +74,20 @@ const Contact = () => {
     {
       icon: <Github className="w-5 h-5" />,
       label: 'GitHub',
-      username: '@alexjohnson',
-      link: 'https://github.com/alexjohnson'
+      username: '@liamribe',
+      link: 'https://github.com/liamribe'
     },
     {
       icon: <Linkedin className="w-5 h-5" />,
       label: 'LinkedIn',
-      username: 'Alex Johnson',
-      link: 'https://linkedin.com/in/alexjohnson'
+      username: 'Liam Ribe',
+      link: 'https://linkedin.com/in/liamribe'
     },
     {
       icon: <Twitter className="w-5 h-5" />,
       label: 'Twitter',
-      username: '@alexjohnson_dev',
-      link: 'https://twitter.com/alexjohnson_dev'
+      username: '@liamribe_dev',
+      link: 'https://twitter.com/liamribe_dev'
     }
   ];
 
@@ -108,7 +108,7 @@ const Contact = () => {
           <Card className="glass-effect border-border/50 hover-glow">
             <CardHeader>
               <CardTitle className="text-2xl font-semibold text-gradient">
-                Send a Message
+                Let's Build Something Amazing
               </CardTitle>
               <CardDescription>
                 Fill out the form below and I'll get back to you as soon as possible.

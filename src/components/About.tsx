@@ -5,12 +5,12 @@ const About = () => {
   const skills = [
     'React & Next.js',
     'Node.js & Express',
-    'FastAPI & Python',
-    'PostgreSQL & MongoDB',
-    'TailwindCSS & SCSS',
-    'Docker & AWS',
+    'Python & FastAPI',
+    'Go & Kubernetes',
+    'PostgreSQL & Redis',
+    'AWS & Docker',
     'TypeScript',
-    'Git & GitHub'
+    'GraphQL & REST APIs'
   ];
 
   return (
@@ -18,10 +18,10 @@ const About = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            About <span className="text-gradient">Me</span>
+            About <span className="text-gradient">Liam</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Passionate developer with 5+ years of experience building scalable web applications
+            Innovative software architect with 6+ years of experience building next-generation systems
           </p>
         </div>
 
@@ -32,7 +32,7 @@ const About = () => {
               <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-30"></div>
               <img 
                 src={profilePicture}
-                alt="Alex Johnson - Full Stack Developer"
+                alt="Liam Ribe - Software Developer"
                 className="relative z-10 w-80 h-80 object-cover rounded-2xl shadow-card border-2 border-border hover-glow transition-all duration-300"
               />
             </div>
@@ -46,21 +46,20 @@ const About = () => {
               </h3>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  I'm a passionate full-stack developer with over 5 years of experience 
-                  creating digital solutions that matter. My journey began with curiosity 
-                  about how websites work, and it evolved into a love for crafting 
-                  exceptional user experiences.
+                  I'm an innovative software developer with 6+ years of experience architecting 
+                  scalable solutions and leading development teams. My expertise spans modern web 
+                  technologies, cloud platforms, and enterprise-grade applications that serve 
+                  millions of users worldwide.
                 </p>
                 <p>
-                  I specialize in modern web technologies like React, Node.js, and Python, 
-                  always staying updated with the latest industry trends and best practices. 
-                  I believe in writing clean, maintainable code and building applications 
-                  that scale.
+                  Beyond coding, I'm passionate about emerging technologies like AI/ML, blockchain, 
+                  and DevOps automation. I frequently speak at tech conferences and contribute to 
+                  open-source projects that push the boundaries of what's possible.
                 </p>
                 <p>
-                  When I'm not coding, you can find me exploring new technologies, 
-                  contributing to open-source projects, or sharing knowledge with the 
-                  developer community.
+                  I specialize in system architecture, performance optimization, and building 
+                  high-availability applications. My approach combines technical excellence with 
+                  business acumen to deliver solutions that drive real impact.
                 </p>
               </div>
             </Card>

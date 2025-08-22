@@ -3,81 +3,115 @@ import { Badge } from '@/components/ui/badge';
 import { Calendar, MapPin, Briefcase, GraduationCap } from 'lucide-react';
 
 const Experience = () => {
-  const experiences = [
-    {
-      type: 'work',
-      title: 'Senior Full Stack Developer',
-      company: 'TechCorp Solutions',
-      location: 'San Francisco, CA',
-      period: '2022 - Present',
-      description: 'Leading development of enterprise web applications serving 100k+ users. Architected microservices infrastructure and mentored junior developers.',
-      technologies: ['React', 'Node.js', 'AWS', 'PostgreSQL', 'Docker'],
-      achievements: [
-        'Improved application performance by 40%',
-        'Led team of 5 developers',
-        'Implemented CI/CD pipeline reducing deployment time by 60%'
-      ]
-    },
-    {
-      type: 'work',
-      title: 'Full Stack Developer',
-      company: 'StartupXYZ',
-      location: 'Remote',
-      period: '2020 - 2022',
-      description: 'Developed and maintained multiple client projects using modern web technologies. Collaborated with design and product teams to deliver exceptional user experiences.',
-      technologies: ['Vue.js', 'Express.js', 'MongoDB', 'TailwindCSS'],
-      achievements: [
-        'Built 8+ production applications',
-        'Maintained 99.9% uptime across all projects',
-        'Reduced development time by 30% through reusable components'
-      ]
-    },
-    {
-      type: 'work',
-      title: 'Frontend Developer',
-      company: 'Digital Agency Inc',
-      location: 'New York, NY',
-      period: '2019 - 2020',
-      description: 'Specialized in creating responsive, accessible websites and web applications. Worked closely with designers to implement pixel-perfect designs.',
-      technologies: ['JavaScript', 'SCSS', 'WordPress', 'jQuery'],
-      achievements: [
-        'Delivered 15+ websites ahead of schedule',
-        'Achieved 98+ lighthouse scores',
-        'Increased client satisfaction by 25%'
-      ]
-    }
-  ];
+const experiences = [
+  {
+    type: 'work',
+    title: 'Principal Software Engineer',
+    company: 'CloudScale Technologies',
+    location: 'Seattle, WA',
+    period: '2023 - Present',
+    description: 'Architecting next-generation cloud infrastructure and leading a team of 12 engineers. Spearheading AI/ML integration initiatives and enterprise-scale system design.',
+    technologies: ['Kubernetes', 'Go', 'Python', 'AWS', 'Terraform', 'GraphQL'],
+    achievements: [
+      'Designed systems handling 10M+ requests/day',
+      'Led migration to microservices architecture',
+      'Reduced infrastructure costs by 35%',
+      'Implemented ML-driven auto-scaling solutions'
+    ]
+  },
+  {
+    type: 'work',
+    title: 'Senior Full Stack Developer',
+    company: 'TechFlow Solutions',
+    location: 'San Francisco, CA',
+    period: '2021 - 2023',
+    description: 'Led development of mission-critical fintech applications with real-time data processing. Architected scalable backend systems and mentored development teams.',
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'Redis', 'Docker', 'TypeScript'],
+    achievements: [
+      'Built real-time trading platform serving 500k+ users',
+      'Implemented high-frequency data processing pipelines',
+      'Achieved 99.99% uptime SLA',
+      'Led team of 8 developers across 3 time zones'
+    ]
+  },
+  {
+    type: 'work',
+    title: 'Full Stack Developer',
+    company: 'InnovateHub',
+    location: 'Austin, TX',
+    period: '2019 - 2021',
+    description: 'Developed cutting-edge e-commerce platforms and payment processing systems. Focused on performance optimization and scalable architecture design.',
+    technologies: ['Vue.js', 'Express.js', 'MongoDB', 'Stripe API', 'AWS Lambda'],
+    achievements: [
+      'Built e-commerce platform processing $10M+ annually',
+      'Integrated 15+ payment gateways',
+      'Reduced page load times by 60%',
+      'Implemented advanced fraud detection systems'
+    ]
+  },
+  {
+    type: 'work',
+    title: 'Software Developer',
+    company: 'CodeCraft Studios',
+    location: 'Remote',
+    period: '2018 - 2019',
+    description: 'Specialized in mobile-first web applications and progressive web apps. Collaborated with international teams to deliver innovative software solutions.',
+    technologies: ['React Native', 'Firebase', 'PWA', 'WebRTC', 'Socket.io'],
+    achievements: [
+      'Launched 5 PWAs with 100k+ downloads',
+      'Implemented real-time communication features',
+      'Achieved Google Lighthouse scores of 95+',
+      'Led internationalization for 12 languages'
+    ]
+  }
+];
 
-  const education = [
-    {
-      type: 'education',
-      title: 'Bachelor of Computer Science',
-      company: 'University of Technology',
-      location: 'California, USA',
-      period: '2015 - 2019',
-      description: 'Focused on software engineering, algorithms, and data structures. Graduated Magna Cum Laude with specialization in web technologies.',
-      technologies: ['Java', 'Python', 'C++', 'Database Systems'],
-      achievements: [
-        'GPA: 3.8/4.0',
-        'Dean\'s List for 6 semesters',
-        'President of Computer Science Society'
-      ]
-    },
-    {
-      type: 'education',
-      title: 'Full Stack Web Development',
-      company: 'FreeCodeCamp',
-      location: 'Online',
-      period: '2018',
-      description: 'Comprehensive certification covering frontend and backend web development, including responsive design and APIs.',
-      technologies: ['HTML/CSS', 'JavaScript', 'Node.js', 'MongoDB'],
-      achievements: [
-        'Completed 300+ coding challenges',
-        'Built 5 certification projects',
-        'Earned Full Stack Developer Certification'
-      ]
-    }
-  ];
+const education = [
+  {
+    type: 'education',
+    title: 'Master of Science in Computer Science',
+    company: 'Stanford University',
+    location: 'Stanford, CA',
+    period: '2017 - 2018',
+    description: 'Advanced studies in distributed systems, machine learning, and software architecture. Thesis focused on scalable microservices patterns for enterprise applications.',
+    technologies: ['Scala', 'Apache Kafka', 'TensorFlow', 'Kubernetes'],
+    achievements: [
+      'GPA: 3.9/4.0 - Dean\'s List every semester',
+      'Research published in ACM Digital Library',
+      'TA for Advanced Algorithms course',
+      'Winner of Stanford Innovation Challenge'
+    ]
+  },
+  {
+    type: 'education',
+    title: 'Bachelor of Science in Software Engineering',
+    company: 'MIT',
+    location: 'Cambridge, MA',
+    period: '2014 - 2018',
+    description: 'Comprehensive foundation in computer science with specialization in software engineering. Senior capstone project on blockchain-based smart contracts.',
+    technologies: ['C++', 'Java', 'Python', 'Solidity', 'Assembly'],
+    achievements: [
+      'Summa Cum Laude (GPA: 3.95/4.0)',
+      'Valedictorian of Software Engineering Department',
+      'Published 3 papers on blockchain technology',
+      'President of MIT Blockchain Society'
+    ]
+  },
+  {
+    type: 'certification',
+    title: 'AWS Solutions Architect Professional',
+    company: 'Amazon Web Services',
+    location: 'Online',
+    period: '2022 - Present',
+    description: 'Advanced certification demonstrating expertise in designing and deploying scalable, highly available systems on AWS cloud infrastructure.',
+    technologies: ['AWS', 'CloudFormation', 'Lambda', 'ECS', 'RDS'],
+    achievements: [
+      'Scored 950/1000 on certification exam',
+      'Certified trainer for AWS workshops',
+      'Led 20+ cloud migration projects'
+    ]
+  }
+];
 
   const allItems = [...experiences, ...education].sort((a, b) => {
     const getYear = (period: string) => parseInt(period.split(' - ')[0]);

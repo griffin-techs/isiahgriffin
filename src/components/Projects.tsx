@@ -4,68 +4,88 @@ import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Github } from 'lucide-react';
 
 const Projects = () => {
-  const projects = [
-    {
-      id: 1,
-      title: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with React, Node.js, and Stripe integration. Features include user authentication, product management, shopping cart, and payment processing.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop",
-      tech: ["React", "Node.js", "MongoDB", "Stripe", "TailwindCSS"],
-      github: "https://github.com",
-      demo: "https://demo.com",
-      featured: true
-    },
-    {
-      id: 2,
-      title: "Task Management App",
-      description: "Collaborative task management application built with Next.js and FastAPI. Real-time updates, team collaboration, and advanced filtering capabilities.",
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop",
-      tech: ["Next.js", "FastAPI", "PostgreSQL", "Socket.io", "Redux"],
-      github: "https://github.com",
-      demo: "https://demo.com",
-      featured: true
-    },
-    {
-      id: 3,
-      title: "Weather Dashboard",
-      description: "Beautiful weather dashboard with location-based forecasts, interactive maps, and historical data visualization using Chart.js and OpenWeather API.",
-      image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop",
-      tech: ["React", "Chart.js", "OpenWeather API", "Geolocation"],
-      github: "https://github.com",
-      demo: "https://demo.com",
-      featured: false
-    },
-    {
-      id: 4,
-      title: "Social Media Analytics",
-      description: "Analytics platform for social media metrics with custom dashboards, data visualization, and automated reporting features.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
-      tech: ["Vue.js", "Python", "D3.js", "Redis", "Docker"],
-      github: "https://github.com",
-      demo: "https://demo.com",
-      featured: false
-    },
-    {
-      id: 5,
-      title: "Learning Management System",
-      description: "Educational platform with course management, video streaming, progress tracking, and interactive quizzes for online learning.",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=300&fit=crop",
-      tech: ["React", "Express.js", "MySQL", "AWS S3", "JWT"],
-      github: "https://github.com",
-      demo: "https://demo.com",
-      featured: false
-    },
-    {
-      id: 6,
-      title: "Real Estate Platform",
-      description: "Property listing platform with advanced search, virtual tours, mortgage calculator, and agent management system.",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500&h=300&fit=crop",
-      tech: ["Angular", "Django", "PostgreSQL", "Mapbox", "Stripe"],
-      github: "https://github.com",
-      demo: "https://demo.com",
-      featured: false
-    }
-  ];
+const projects = [
+  {
+    id: 1,
+    title: 'CloudScale Enterprise Platform',
+    description: 'Microservices-based enterprise platform handling 10M+ daily requests with AI-powered analytics, real-time monitoring, and auto-scaling capabilities.',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=300&fit=crop',
+    tech: ['Kubernetes', 'Go', 'React', 'PostgreSQL', 'Apache Kafka', 'Terraform'],
+    github: 'https://github.com/liamribe/cloudscale-platform',
+    demo: 'https://cloudscale.liamribe.dev',
+    featured: true
+  },
+  {
+    id: 2,
+    title: 'FinTech Trading Engine',
+    description: 'High-frequency trading platform with microsecond latency, real-time market data processing, and advanced risk management algorithms.',
+    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=500&h=300&fit=crop',
+    tech: ['C++', 'Python', 'Redis', 'WebSocket', 'TimescaleDB', 'Docker'],
+    github: 'https://github.com/liamribe/trading-engine',
+    demo: 'https://trading.liamribe.dev',
+    featured: true
+  },
+  {
+    id: 3,
+    title: 'AI-Powered Code Review Bot',
+    description: 'Machine learning-based code review automation tool that integrates with GitHub, provides intelligent suggestions, and learns from team preferences.',
+    image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=500&h=300&fit=crop',
+    tech: ['Python', 'TensorFlow', 'FastAPI', 'GitHub API', 'PostgreSQL'],
+    github: 'https://github.com/liamribe/ai-code-reviewer',
+    demo: 'https://codereview.liamribe.dev',
+    featured: true
+  },
+  {
+    id: 4,
+    title: 'Blockchain DeFi Protocol',
+    description: 'Decentralized finance protocol with smart contracts for yield farming, staking, and automated market making on Ethereum.',
+    image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=500&h=300&fit=crop',
+    tech: ['Solidity', 'Web3.js', 'React', 'Node.js', 'IPFS'],
+    github: 'https://github.com/liamribe/defi-protocol',
+    demo: 'https://defi.liamribe.dev',
+    featured: false
+  },
+  {
+    id: 5,
+    title: 'Real-time Collaboration Suite',
+    description: 'Google Workspace competitor with real-time document editing, video conferencing, and team collaboration tools built from scratch.',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop',
+    tech: ['React', 'WebRTC', 'Socket.io', 'MongoDB', 'Node.js', 'Operational Transform'],
+    github: 'https://github.com/liamribe/collab-suite',
+    demo: 'https://collab.liamribe.dev',
+    featured: false
+  },
+  {
+    id: 6,
+    title: 'IoT Smart City Platform',
+    description: 'Comprehensive IoT platform for smart city management with sensor data processing, predictive analytics, and citizen engagement features.',
+    image: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=500&h=300&fit=crop',
+    tech: ['Next.js', 'TypeScript', 'InfluxDB', 'MQTT', 'TensorFlow', 'AWS IoT'],
+    github: 'https://github.com/liamribe/smart-city',
+    demo: 'https://smartcity.liamribe.dev',
+    featured: false
+  },
+  {
+    id: 7,
+    title: 'Quantum Computing Simulator',
+    description: 'Web-based quantum computing simulator with visual circuit designer, quantum algorithm implementations, and educational resources.',
+    image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&h=300&fit=crop',
+    tech: ['Rust', 'WebAssembly', 'React', 'D3.js', 'WebGL'],
+    github: 'https://github.com/liamribe/quantum-simulator',
+    demo: 'https://quantum.liamribe.dev',
+    featured: false
+  },
+  {
+    id: 8,
+    title: 'Serverless ML Pipeline',
+    description: 'Auto-scaling machine learning pipeline using serverless architecture for model training, deployment, and inference at enterprise scale.',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&h=300&fit=crop',
+    tech: ['AWS Lambda', 'Python', 'Kubeflow', 'MLflow', 'Terraform', 'Apache Airflow'],
+    github: 'https://github.com/liamribe/ml-pipeline',
+    demo: 'https://mlpipeline.liamribe.dev',
+    featured: false
+  }
+];
 
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
