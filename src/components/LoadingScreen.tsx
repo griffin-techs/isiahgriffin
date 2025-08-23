@@ -28,7 +28,7 @@ export default function LoadingScreen() {
         <div className="animate-float mb-8">
           <Code2 className="w-16 h-16 text-primary mx-auto" />
         </div>
-        <h1 className="text-2xl font-bold text-gradient mb-4">Liam Ribe</h1>
+        <h1 className="text-2xl font-bold text-gradient mb-4">Isiah Griffin</h1>
         <div className="w-64 h-1 bg-muted rounded-full overflow-hidden">
           <div 
             className="h-full bg-gradient-primary transition-all duration-300"

@@ -32,7 +32,7 @@ const Hero = () => {
           
           {/* Name */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">
-            <span className="text-gradient typing-animation">Liam Ribe</span>
+            <span className="text-gradient typing-animation">Isiah Griffin</span>
           </h1>
           
           {/* Role */}
@@ -68,21 +68,21 @@ const Hero = () => {
           {/* Social Links */}
           <div className="flex justify-center gap-6 mb-12">
             <a 
-              href="https://github.com/liamribe" 
+              href="https://github.com/isiahgriffin" 
               className="text-muted-foreground hover:text-primary transition-colors duration-200 hover-glow"
               aria-label="GitHub Profile"
             >
               <Github size={24} />
             </a>
             <a 
-              href="https://linkedin.com/in/liamribe" 
+              href="https://linkedin.com/in/isiahgriffin" 
               className="text-muted-foreground hover:text-primary transition-colors duration-200 hover-glow"
               aria-label="LinkedIn Profile"
             >
               <Linkedin size={24} />
             </a>
             <a 
-              href="mailto:liam@liamribe.dev" 
+              href="mailto:isiah@isiahgriffin.dev" 
               className="text-muted-foreground hover:text-primary transition-colors duration-200 hover-glow"
               aria-label="Email Contact"
             >

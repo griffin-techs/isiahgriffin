@@ -53,8 +53,8 @@ const Contact = () => {
     {
       icon: <Mail className="w-5 h-5" />,
       label: 'Email',
-      value: 'liam@liamribe.dev',
-      link: 'mailto:liam@liamribe.dev'
+      value: 'isiah@isiahgriffin.dev',
+      link: 'mailto:isiah@isiahgriffin.dev'
     },
     {
       icon: <Phone className="w-5 h-5" />,
@@ -74,20 +74,20 @@ const Contact = () => {
     {
       icon: <Github className="w-5 h-5" />,
       label: 'GitHub',
-      username: '@liamribe',
-      link: 'https://github.com/liamribe'
+      username: '@isiahgriffin',
+      link: 'https://github.com/isiahgriffin'
     },
     {
       icon: <Linkedin className="w-5 h-5" />,
       label: 'LinkedIn',
-      username: 'Liam Ribe',
-      link: 'https://linkedin.com/in/liamribe'
+      username: 'Isiah Griffin',
+      link: 'https://linkedin.com/in/isiahgriffin'
     },
     {
       icon: <Twitter className="w-5 h-5" />,
       label: 'Twitter',
-      username: '@liamribe_dev',
-      link: 'https://twitter.com/liamribe_dev'
+      username: '@isiahgriffin_dev',
+      link: 'https://twitter.com/isiahgriffin_dev'
     }
   ];
 

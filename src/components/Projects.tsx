@@ -11,8 +11,8 @@ const projects = [
     description: 'Microservices-based enterprise platform handling 10M+ daily requests with AI-powered analytics, real-time monitoring, and auto-scaling capabilities.',
     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=300&fit=crop',
     tech: ['Kubernetes', 'Go', 'React', 'PostgreSQL', 'Apache Kafka', 'Terraform'],
-    github: 'https://github.com/liamribe/cloudscale-platform',
-    demo: 'https://cloudscale.liamribe.dev',
+    github: 'https://github.com/isiahgriffin/cloudscale-platform',
+    demo: 'https://cloudscale.isiahgriffin.dev',
     featured: true
   },
   {
@@ -21,8 +21,8 @@ const projects = [
     description: 'High-frequency trading platform with microsecond latency, real-time market data processing, and advanced risk management algorithms.',
     image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=500&h=300&fit=crop',
     tech: ['C++', 'Python', 'Redis', 'WebSocket', 'TimescaleDB', 'Docker'],
-    github: 'https://github.com/liamribe/trading-engine',
-    demo: 'https://trading.liamribe.dev',
+    github: 'https://github.com/isiahgriffin/trading-engine',
+    demo: 'https://trading.isiahgriffin.dev',
     featured: true
   },
   {
@@ -31,8 +31,8 @@ const projects = [
     description: 'Machine learning-based code review automation tool that integrates with GitHub, provides intelligent suggestions, and learns from team preferences.',
     image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=500&h=300&fit=crop',
     tech: ['Python', 'TensorFlow', 'FastAPI', 'GitHub API', 'PostgreSQL'],
-    github: 'https://github.com/liamribe/ai-code-reviewer',
-    demo: 'https://codereview.liamribe.dev',
+    github: 'https://github.com/isiahgriffin/ai-code-reviewer',
+    demo: 'https://codereview.isiahgriffin.dev',
     featured: true
   },
   {
@@ -41,8 +41,8 @@ const projects = [
     description: 'Decentralized finance protocol with smart contracts for yield farming, staking, and automated market making on Ethereum.',
     image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=500&h=300&fit=crop',
     tech: ['Solidity', 'Web3.js', 'React', 'Node.js', 'IPFS'],
-    github: 'https://github.com/liamribe/defi-protocol',
-    demo: 'https://defi.liamribe.dev',
+    github: 'https://github.com/isiahgriffin/defi-protocol',
+    demo: 'https://defi.isiahgriffin.dev',
     featured: false
   },
   {
@@ -51,8 +51,8 @@ const projects = [
     description: 'Google Workspace competitor with real-time document editing, video conferencing, and team collaboration tools built from scratch.',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop',
     tech: ['React', 'WebRTC', 'Socket.io', 'MongoDB', 'Node.js', 'Operational Transform'],
-    github: 'https://github.com/liamribe/collab-suite',
-    demo: 'https://collab.liamribe.dev',
+    github: 'https://github.com/isiahgriffin/collab-suite',
+    demo: 'https://collab.isiahgriffin.dev',
     featured: false
   },
   {
@@ -61,8 +61,8 @@ const projects = [
     description: 'Comprehensive IoT platform for smart city management with sensor data processing, predictive analytics, and citizen engagement features.',
     image: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=500&h=300&fit=crop',
     tech: ['Next.js', 'TypeScript', 'InfluxDB', 'MQTT', 'TensorFlow', 'AWS IoT'],
-    github: 'https://github.com/liamribe/smart-city',
-    demo: 'https://smartcity.liamribe.dev',
+    github: 'https://github.com/isiahgriffin/smart-city',
+    demo: 'https://smartcity.isiahgriffin.dev',
     featured: false
   },
   {
@@ -71,8 +71,8 @@ const projects = [
     description: 'Web-based quantum computing simulator with visual circuit designer, quantum algorithm implementations, and educational resources.',
     image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&h=300&fit=crop',
     tech: ['Rust', 'WebAssembly', 'React', 'D3.js', 'WebGL'],
-    github: 'https://github.com/liamribe/quantum-simulator',
-    demo: 'https://quantum.liamribe.dev',
+    github: 'https://github.com/isiahgriffin/quantum-simulator',
+    demo: 'https://quantum.isiahgriffin.dev',
     featured: false
   },
   {
@@ -81,8 +81,8 @@ const projects = [
     description: 'Auto-scaling machine learning pipeline using serverless architecture for model training, deployment, and inference at enterprise scale.',
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&h=300&fit=crop',
     tech: ['AWS Lambda', 'Python', 'Kubeflow', 'MLflow', 'Terraform', 'Apache Airflow'],
-    github: 'https://github.com/liamribe/ml-pipeline',
-    demo: 'https://mlpipeline.liamribe.dev',
+    github: 'https://github.com/isiahgriffin/ml-pipeline',
+    demo: 'https://mlpipeline.isiahgriffin.dev',
     featured: false
   }
 ];

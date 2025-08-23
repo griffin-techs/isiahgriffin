@@ -1,3 +1,7 @@
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -14,6 +18,15 @@ import Testimonials from '@/components/Testimonials';
 import TechStack from '@/components/TechStack';
 
 const Index = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 50,
+    });
+  }, []);
+
   return (
     <>
       <LoadingScreen />
@@ -22,14 +35,30 @@ const Index = () => {
       <main className="min-h-screen">
         <Navigation />
         <Hero />
-        <About />
-        <Statistics />
-        <TechStack />
-        <Projects />
-        <Skills />
-        <Experience />
-        <Testimonials />
-        <Contact />
+        <div data-aos="fade-up">
+          <About />
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100">
+          <Statistics />
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <TechStack />
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100">
+          <Projects />
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <Skills />
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100">
+          <Experience />
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <Testimonials />
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100">
+          <Contact />
+        </div>
         <Footer />
       </main>
     </>

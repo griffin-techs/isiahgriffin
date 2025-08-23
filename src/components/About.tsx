@@ -18,7 +18,7 @@ const About = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            About <span className="text-gradient">Liam</span>
+            About <span className="text-gradient">Isiah</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Innovative software architect with 6+ years of experience building next-generation systems
@@ -32,7 +32,7 @@ const About = () => {
               <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-30"></div>
               <img 
                 src={profilePicture}
-                alt="Liam Ribe - Software Developer"
+                alt="Isiah Griffin - Software Developer"
                 className="relative z-10 w-80 h-80 object-cover rounded-2xl shadow-card border-2 border-border hover-glow transition-all duration-300"
               />
             </div>
