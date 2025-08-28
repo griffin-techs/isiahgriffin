@@ -1,5 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 
+// Helper function to get resolved CSS color values
+const getCanvasColors = () => {
+  return {
+    primary: 'hsl(217, 91%, 60%)',
+    secondary: 'hsl(263, 70%, 50%)',
+    accent: 'hsl(142, 76%, 36%)',
+    muted: 'hsl(217, 32%, 17%)'
+  };
+};
+
 interface Particle {
   x: number;
   y: number;
@@ -44,6 +54,8 @@ const ParticleSystem = () => {
     const initParticles = () => {
       particlesRef.current = [];
       const particleCount = Math.min(150, Math.floor(dimensions.width * dimensions.height / 15000));
+      const colors = getCanvasColors();
+      const colorOptions = [colors.primary, colors.secondary, colors.accent];
       
       for (let i = 0; i < particleCount; i++) {
         particlesRef.current.push({
@@ -53,7 +65,7 @@ const ParticleSystem = () => {
           vy: (Math.random() - 0.5) * 0.5,
           size: Math.random() * 3 + 1,
           opacity: Math.random() * 0.8 + 0.2,
-          color: `hsl(${220 + Math.random() * 60}, 70%, ${50 + Math.random() * 30}%)`
+          color: colorOptions[Math.floor(Math.random() * colorOptions.length)]
         });
       }
     };
@@ -108,7 +120,7 @@ const ParticleSystem = () => {
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = particle.color.replace(')', `, ${particle.opacity})`).replace('hsl', 'hsla');
+        ctx.fillStyle = particle.color.replace('hsl(', 'hsla(').replace(')', `, ${particle.opacity})`);
         ctx.fill();
 
         // Draw connections
@@ -121,7 +133,7 @@ const ParticleSystem = () => {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = `hsla(220, 70%, 60%, ${(100 - distance) / 500})`;
+            ctx.strokeStyle = `hsla(217, 91%, 60%, ${(100 - distance) / 500})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }

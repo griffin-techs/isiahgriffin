@@ -4,8 +4,18 @@ import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
+// Helper function to get resolved CSS color values for Three.js
+const getThreeColors = () => {
+  return {
+    primary: '#4F9BFF', // hsl(217, 91%, 60%)
+    secondary: '#9F4FFF', // hsl(263, 70%, 50%)
+    accent: '#4FFF9F' // hsl(142, 76%, 36%)
+  };
+};
+
 const AnimatedSphere = ({ position }: { position: [number, number, number] }) => {
   const meshRef = useRef<THREE.Mesh>(null);
+  const colors = getThreeColors();
   
   useFrame((state) => {
     if (meshRef.current) {
@@ -18,7 +28,7 @@ const AnimatedSphere = ({ position }: { position: [number, number, number] }) =>
     <Float speed={2} rotationIntensity={1} floatIntensity={2}>
       <Sphere ref={meshRef} position={position} args={[1, 32, 32]}>
         <MeshDistortMaterial
-          color="hsl(var(--primary))"
+          color={colors.primary}
           attach="material"
           distort={0.4}
           speed={2}
@@ -32,6 +42,7 @@ const AnimatedSphere = ({ position }: { position: [number, number, number] }) =>
 
 const AnimatedBox = ({ position }: { position: [number, number, number] }) => {
   const meshRef = useRef<THREE.Mesh>(null);
+  const colors = getThreeColors();
   
   useFrame((state) => {
     if (meshRef.current) {
@@ -44,7 +55,7 @@ const AnimatedBox = ({ position }: { position: [number, number, number] }) => {
     <Float speed={1.5} rotationIntensity={2} floatIntensity={1}>
       <Box ref={meshRef} position={position} args={[1.5, 1.5, 1.5]}>
         <meshStandardMaterial
-          color="hsl(var(--accent))"
+          color={colors.accent}
           roughness={0.3}
           metalness={0.7}
         />
@@ -55,6 +66,7 @@ const AnimatedBox = ({ position }: { position: [number, number, number] }) => {
 
 const AnimatedTorus = ({ position }: { position: [number, number, number] }) => {
   const meshRef = useRef<THREE.Mesh>(null);
+  const colors = getThreeColors();
   
   useFrame((state) => {
     if (meshRef.current) {
@@ -67,7 +79,7 @@ const AnimatedTorus = ({ position }: { position: [number, number, number] }) => 
     <Float speed={3} rotationIntensity={0.5} floatIntensity={3}>
       <Torus ref={meshRef} position={position} args={[1, 0.4, 16, 100]}>
         <meshStandardMaterial
-          color="hsl(var(--secondary))"
+          color={colors.secondary}
           roughness={0.2}
           metalness={0.9}
         />
@@ -77,6 +89,8 @@ const AnimatedTorus = ({ position }: { position: [number, number, number] }) => 
 };
 
 const Scene3D = () => {
+  const colors = getThreeColors();
+  
   return (
     <div className="absolute inset-0 -z-10">
       <Canvas
@@ -88,12 +102,12 @@ const Scene3D = () => {
         <directionalLight 
           position={[10, 10, 5]} 
           intensity={1}
-          color="hsl(var(--primary))"
+          color={colors.primary}
         />
         <pointLight 
           position={[-10, -10, -5]} 
           intensity={0.5}
-          color="hsl(var(--accent))"
+          color={colors.accent}
         />
         
         <AnimatedSphere position={[-4, 2, 0]} />

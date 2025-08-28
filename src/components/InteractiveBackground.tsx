@@ -1,5 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 
+// Helper function to get resolved CSS color values
+const getCanvasColors = () => {
+  return {
+    primary: 'hsl(217, 91%, 60%)',
+    secondary: 'hsl(263, 70%, 50%)',
+    accent: 'hsl(142, 76%, 36%)',
+    muted: 'hsl(217, 32%, 17%)'
+  };
+};
+
 interface GeometricShape {
   x: number;
   y: number;
@@ -47,11 +57,12 @@ const InteractiveBackground = () => {
       shapesRef.current = [];
       const shapeCount = Math.min(50, Math.floor(dimensions.width * dimensions.height / 25000));
       const types: GeometricShape['type'][] = ['triangle', 'square', 'hexagon', 'circle'];
+      const canvasColors = getCanvasColors();
       const colors = [
-        'hsl(var(--primary))',
-        'hsl(var(--secondary))',
-        'hsl(var(--accent))',
-        'hsl(var(--muted))'
+        canvasColors.primary,
+        canvasColors.secondary,
+        canvasColors.accent,
+        canvasColors.muted
       ];
       
       for (let i = 0; i < shapeCount; i++) {
@@ -85,11 +96,11 @@ const InteractiveBackground = () => {
       ctx.scale(shape.scale, shape.scale);
       
       const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, shape.size);
-      gradient.addColorStop(0, shape.color.replace(')', `, ${shape.opacity})`).replace('hsl', 'hsla'));
-      gradient.addColorStop(1, shape.color.replace(')', `, 0)`).replace('hsl', 'hsla'));
+      gradient.addColorStop(0, shape.color.replace('hsl(', 'hsla(').replace(')', `, ${shape.opacity})`));
+      gradient.addColorStop(1, shape.color.replace('hsl(', 'hsla(').replace(')', `, 0)`));
       
       ctx.fillStyle = gradient;
-      ctx.strokeStyle = shape.color.replace(')', `, ${shape.opacity * 0.5})`).replace('hsl', 'hsla');
+      ctx.strokeStyle = shape.color.replace('hsl(', 'hsla(').replace(')', `, ${shape.opacity * 0.5})`);
       ctx.lineWidth = 2;
 
       ctx.beginPath();
