@@ -3,10 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 // Helper function to get resolved CSS color values
 const getCanvasColors = () => {
   return {
-    primary: 'hsl(217, 91%, 60%)',
-    secondary: 'hsl(263, 70%, 50%)',
-    accent: 'hsl(142, 76%, 36%)',
-    muted: 'hsl(217, 32%, 17%)'
+    primary: '#4F9BFF',
+    secondary: '#9F4FFF',
+    accent: '#21C55D',
+    muted: '#2D3748'
   };
 };
 
@@ -120,7 +120,7 @@ const ParticleSystem = () => {
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = particle.color.replace('hsl(', 'hsla(').replace(')', `, ${particle.opacity})`);
+        ctx.fillStyle = particle.color + Math.floor(particle.opacity * 255).toString(16).padStart(2, '0');
         ctx.fill();
 
         // Draw connections
@@ -133,7 +133,7 @@ const ParticleSystem = () => {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = `hsla(217, 91%, 60%, ${(100 - distance) / 500})`;
+            ctx.strokeStyle = `#4F9BFF${Math.floor(((100 - distance) / 500) * 255).toString(16).padStart(2, '0')}`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }

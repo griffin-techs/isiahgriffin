@@ -5,18 +5,31 @@ import { Menu, X } from 'lucide-react';
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      
+      // Check active section
+      const sections = ['hero', 'about', 'projects', 'skills', 'experience', 'contact'];
+      const current = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+      setActiveSection(current || '');
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
+    { name: 'Home', href: '#hero' },
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
     { name: 'Skills', href: '#skills' },
@@ -47,7 +60,11 @@ const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className={`transition-colors duration-200 ${
+                  activeSection === item.href.substring(1) 
+                    ? 'text-primary font-semibold' 
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
               >
                 {item.name}
               </button>
@@ -81,7 +98,11 @@ const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left py-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className={`block w-full text-left py-2 transition-colors duration-200 ${
+                  activeSection === item.href.substring(1)
+                    ? 'text-primary font-semibold'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
               >
                 {item.name}
               </button>

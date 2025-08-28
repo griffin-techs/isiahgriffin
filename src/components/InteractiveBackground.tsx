@@ -3,10 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 // Helper function to get resolved CSS color values
 const getCanvasColors = () => {
   return {
-    primary: 'hsl(217, 91%, 60%)',
-    secondary: 'hsl(263, 70%, 50%)',
-    accent: 'hsl(142, 76%, 36%)',
-    muted: 'hsl(217, 32%, 17%)'
+    primary: '#4F9BFF',
+    secondary: '#9F4FFF', 
+    accent: '#21C55D',
+    muted: '#2D3748'
   };
 };
 
@@ -96,11 +96,11 @@ const InteractiveBackground = () => {
       ctx.scale(shape.scale, shape.scale);
       
       const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, shape.size);
-      gradient.addColorStop(0, shape.color.replace('hsl(', 'hsla(').replace(')', `, ${shape.opacity})`));
-      gradient.addColorStop(1, shape.color.replace('hsl(', 'hsla(').replace(')', `, 0)`));
+      gradient.addColorStop(0, shape.color + Math.floor(shape.opacity * 255).toString(16).padStart(2, '0'));
+      gradient.addColorStop(1, shape.color + '00');
       
       ctx.fillStyle = gradient;
-      ctx.strokeStyle = shape.color.replace('hsl(', 'hsla(').replace(')', `, ${shape.opacity * 0.5})`);
+      ctx.strokeStyle = shape.color + Math.floor((shape.opacity * 0.5) * 255).toString(16).padStart(2, '0');
       ctx.lineWidth = 2;
 
       ctx.beginPath();
