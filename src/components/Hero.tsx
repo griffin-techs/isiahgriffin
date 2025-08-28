@@ -1,6 +1,9 @@
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import heroImage from '@/assets/hero-bg.jpg';
+import Scene3D from './Scene3D';
+import ParticleSystem from './ParticleSystem';
+import InteractiveBackground from './InteractiveBackground';
 
 const Hero = () => {
   const scrollToProjects = () => {
@@ -13,14 +16,19 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Interactive Background Elements */}
+      <InteractiveBackground />
+      <ParticleSystem />
+      <Scene3D />
+      
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
         style={{ backgroundImage: `url(${heroImage})` }}
       />
       
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background/90 to-primary/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-primary/10" />
       
       {/* Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
