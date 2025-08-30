@@ -1,0 +1,237 @@
+import { useState, useRef, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+interface Message {
+  id: string;
+  content: string;
+  isBot: boolean;
+  timestamp: Date;
+}
+
+const botResponses = {
+  greeting: [
+    "Hi! I'm Isiah's AI assistant. I can help you learn about his work, skills, and projects. What would you like to know?",
+    "Hello! I'm here to help you explore Isiah's portfolio. Ask me about his projects, experience, or skills!",
+    "Hey there! I can answer questions about Isiah's background, projects, and expertise. How can I help?"
+  ],
+  projects: [
+    "Isiah has worked on various full-stack projects including e-commerce platforms, real-time applications, and modern web apps using React, Node.js, and TypeScript. He's particularly skilled in creating scalable, user-friendly applications.",
+    "His portfolio showcases projects ranging from complex dashboards to interactive web applications. He specializes in modern JavaScript frameworks and has experience with both frontend and backend development."
+  ],
+  skills: [
+    "Isiah is proficient in React, TypeScript, Node.js, Python, and modern web technologies. He also has experience with databases, cloud services, and DevOps practices.",
+    "His technical stack includes frontend frameworks like React and Vue, backend technologies like Node.js and Python, plus databases like PostgreSQL and MongoDB."
+  ],
+  experience: [
+    "Isiah has 5+ years of experience in full-stack development, working on projects for various industries including fintech, e-commerce, and SaaS applications.",
+    "He has experience working in both startup and enterprise environments, leading development teams and architecting scalable solutions."
+  ],
+  contact: [
+    "You can reach Isiah through the contact form on this site, connect with him on LinkedIn, or check out his work on GitHub. He's always open to discussing new opportunities!",
+    "Feel free to use the contact section below to get in touch with Isiah directly. He typically responds within 24 hours."
+  ]
+};
+
+function getRandomResponse(category: keyof typeof botResponses): string {
+  const responses = botResponses[category];
+  return responses[Math.floor(Math.random() * responses.length)];
+}
+
+function generateBotResponse(message: string): string {
+  const lowerMessage = message.toLowerCase();
+  
+  if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+    return getRandomResponse('greeting');
+  }
+  
+  if (lowerMessage.includes('project') || lowerMessage.includes('work') || lowerMessage.includes('portfolio')) {
+    return getRandomResponse('projects');
+  }
+  
+  if (lowerMessage.includes('skill') || lowerMessage.includes('technology') || lowerMessage.includes('tech') || lowerMessage.includes('stack')) {
+    return getRandomResponse('skills');
+  }
+  
+  if (lowerMessage.includes('experience') || lowerMessage.includes('background') || lowerMessage.includes('career')) {
+    return getRandomResponse('experience');
+  }
+  
+  if (lowerMessage.includes('contact') || lowerMessage.includes('reach') || lowerMessage.includes('hire') || lowerMessage.includes('email')) {
+    return getRandomResponse('contact');
+  }
+  
+  return "I can help you learn about Isiah's projects, skills, experience, and how to contact him. Try asking about his technical skills, recent projects, or professional background!";
+}
+
+export default function AIChatbot() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: '1',
+      content: "Hi! I'm Isiah's AI assistant. Ask me about his projects, skills, or experience!",
+      isBot: true,
+      timestamp: new Date()
+    }
+  ]);
+  const [inputValue, setInputValue] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    if (scrollAreaRef.current) {
+      const scrollContainer = scrollAreaRef.current.querySelector('[data-radix-scroll-area-viewport]');
+      if (scrollContainer) {
+        scrollContainer.scrollTop = scrollContainer.scrollHeight;
+      }
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!inputValue.trim()) return;
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      content: inputValue,
+      isBot: false,
+      timestamp: new Date()
+    };
+
+    setMessages(prev => [...prev, userMessage]);
+    setInputValue('');
+    setIsTyping(true);
+
+    // Simulate bot thinking time
+    setTimeout(() => {
+      const botResponse: Message = {
+        id: (Date.now() + 1).toString(),
+        content: generateBotResponse(inputValue),
+        isBot: true,
+        timestamp: new Date()
+      };
+
+      setMessages(prev => [...prev, botResponse]);
+      setIsTyping(false);
+    }, 1000 + Math.random() * 1000);
+  };
+
+  return (
+    <>
+      {/* Chat Toggle Button */}
+      <Button
+        onClick={() => setIsOpen(!isOpen)}
+        className={cn(
+          "fixed bottom-6 right-6 z-50 rounded-full w-14 h-14 shadow-glow",
+          "bg-primary hover:bg-primary/90",
+          isOpen && "bg-destructive hover:bg-destructive/90"
+        )}
+      >
+        {isOpen ? (
+          <X className="w-6 h-6" />
+        ) : (
+          <MessageCircle className="w-6 h-6" />
+        )}
+      </Button>
+
+      {/* Chat Window */}
+      <div className={cn(
+        "fixed bottom-24 right-6 w-80 h-96 z-40 transition-all duration-300",
+        isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
+      )}>
+        <div className="glass-effect rounded-lg h-full flex flex-col border border-border">
+          {/* Header */}
+          <div className="p-4 border-b border-border">
+            <div className="flex items-center gap-2">
+              <Bot className="w-5 h-5 text-primary" />
+              <h3 className="font-semibold text-sm">AI Assistant</h3>
+              <div className="ml-auto flex items-center gap-1">
+                <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+                <span className="text-xs text-muted-foreground">Online</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Messages */}
+          <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
+            <div className="space-y-4">
+              {messages.map((message) => (
+                <div
+                  key={message.id}
+                  className={cn(
+                    "flex gap-2",
+                    message.isBot ? "justify-start" : "justify-end"
+                  )}
+                >
+                  {message.isBot && (
+                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <Bot className="w-3 h-3 text-primary" />
+                    </div>
+                  )}
+                  <div
+                    className={cn(
+                      "max-w-[70%] rounded-lg p-2 text-xs",
+                      message.isBot
+                        ? "bg-muted text-muted-foreground"
+                        : "bg-primary text-primary-foreground ml-auto"
+                    )}
+                  >
+                    {message.content}
+                  </div>
+                  {!message.isBot && (
+                    <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <User className="w-3 h-3 text-accent" />
+                    </div>
+                  )}
+                </div>
+              ))}
+              
+              {isTyping && (
+                <div className="flex gap-2 justify-start">
+                  <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Bot className="w-3 h-3 text-primary" />
+                  </div>
+                  <div className="bg-muted text-muted-foreground rounded-lg p-2 text-xs">
+                    <div className="flex gap-1">
+                      <div className="w-1 h-1 bg-current rounded-full animate-bounce" />
+                      <div className="w-1 h-1 bg-current rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
+                      <div className="w-1 h-1 bg-current rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </ScrollArea>
+
+          {/* Input */}
+          <form onSubmit={handleSubmit} className="p-4 border-t border-border">
+            <div className="flex gap-2">
+              <Input
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder="Ask about Isiah's work..."
+                className="flex-1 h-8 text-xs"
+                disabled={isTyping}
+              />
+              <Button
+                type="submit"
+                size="sm"
+                className="h-8 w-8 p-0"
+                disabled={isTyping || !inputValue.trim()}
+              >
+                <Send className="w-3 h-3" />
+              </Button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+}

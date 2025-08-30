@@ -16,6 +16,8 @@ import ThemeToggle from '@/components/ThemeToggle';
 import Statistics from '@/components/Statistics';
 import Testimonials from '@/components/Testimonials';
 import TechStack from '@/components/TechStack';
+import PWAInstallPrompt from '@/components/PWAInstallPrompt';
+import AIChatbot from '@/components/AIChatbot';
 
 const Index = () => {
   useEffect(() => {
@@ -61,6 +63,8 @@ const Index = () => {
         </div>
         <Footer />
       </main>
+      <PWAInstallPrompt />
+      <AIChatbot />
     </>
   );
 };
