@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Github } from 'lucide-react';
+import CodePlayground from './CodePlayground';
 
 const Projects = () => {
 const projects = [
@@ -13,7 +14,17 @@ const projects = [
     tech: ['Kubernetes', 'Go', 'React', 'PostgreSQL', 'Apache Kafka', 'Terraform'],
     github: 'https://github.com/isiahgriffin/cloudscale-platform',
     demo: 'https://cloudscale.isiahgriffin.dev',
-    featured: true
+    featured: true,
+    codeExamples: [
+      {
+        title: 'Microservice Health Check',
+        description: 'Real-time health monitoring API endpoint with auto-recovery',
+        language: 'javascript' as const,
+        html: '<div id="health-status">\n  <h3>Service Health Dashboard</h3>\n  <div id="services-list"></div>\n  <button id="refresh-btn">Refresh Status</button>\n</div>',
+        css: '#health-status {\n  padding: 20px;\n  border-radius: 8px;\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  color: white;\n  box-shadow: 0 4px 15px rgba(0,0,0,0.2);\n}\n\n.service-item {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px;\n  margin: 8px 0;\n  background: rgba(255,255,255,0.1);\n  border-radius: 4px;\n  border-left: 4px solid;\n}\n\n.status-healthy { border-left-color: #00ff88; }\n.status-warning { border-left-color: #ffaa00; }\n.status-critical { border-left-color: #ff4757; }\n\n#refresh-btn {\n  background: rgba(255,255,255,0.2);\n  border: none;\n  padding: 10px 20px;\n  border-radius: 4px;\n  color: white;\n  cursor: pointer;\n  margin-top: 15px;\n}\n\n#refresh-btn:hover {\n  background: rgba(255,255,255,0.3);\n}',
+        javascript: 'const services = [\n  { name: "API Gateway", status: "healthy", responseTime: 45 },\n  { name: "User Service", status: "healthy", responseTime: 23 },\n  { name: "Payment Service", status: "warning", responseTime: 156 },\n  { name: "Analytics Engine", status: "healthy", responseTime: 89 }\n];\n\nfunction renderServices() {\n  const container = document.getElementById("services-list");\n  container.innerHTML = services.map(service => `\n    <div class="service-item status-${service.status}">\n      <span><strong>${service.name}</strong></span>\n      <span>${service.responseTime}ms</span>\n    </div>\n  `).join("");\n}\n\nfunction refreshStatus() {\n  // Simulate API call with random status updates\n  services.forEach(service => {\n    service.responseTime = Math.floor(Math.random() * 200) + 20;\n    const statuses = ["healthy", "healthy", "healthy", "warning"];\n    service.status = statuses[Math.floor(Math.random() * statuses.length)];\n  });\n  renderServices();\n}\n\ndocument.getElementById("refresh-btn").addEventListener("click", refreshStatus);\nrenderServices();'
+      }
+    ]
   },
   {
     id: 2,
@@ -23,7 +34,17 @@ const projects = [
     tech: ['C++', 'Python', 'Redis', 'WebSocket', 'TimescaleDB', 'Docker'],
     github: 'https://github.com/isiahgriffin/trading-engine',
     demo: 'https://trading.isiahgriffin.dev',
-    featured: true
+    featured: true,
+    codeExamples: [
+      {
+        title: 'Real-time Price Feed',
+        description: 'Live cryptocurrency price tracking with WebSocket connection',
+        language: 'javascript' as const,
+        html: '<div id="trading-dashboard">\n  <h3>Live Crypto Prices</h3>\n  <div id="price-grid"></div>\n  <div id="connection-status">Connecting...</div>\n</div>',
+        css: '#trading-dashboard {\n  padding: 20px;\n  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);\n  color: white;\n  border-radius: 8px;\n  font-family: "Monaco", monospace;\n}\n\n#price-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n  gap: 15px;\n  margin: 20px 0;\n}\n\n.price-card {\n  background: rgba(255,255,255,0.1);\n  padding: 15px;\n  border-radius: 6px;\n  border-left: 4px solid #00ff88;\n  transition: all 0.3s ease;\n}\n\n.price-card.rising {\n  border-left-color: #00ff88;\n  background: rgba(0,255,136,0.1);\n}\n\n.price-card.falling {\n  border-left-color: #ff4757;\n  background: rgba(255,71,87,0.1);\n}\n\n.crypto-symbol {\n  font-size: 18px;\n  font-weight: bold;\n  margin-bottom: 8px;\n}\n\n.crypto-price {\n  font-size: 24px;\n  font-weight: bold;\n  color: #00ff88;\n}\n\n.price-change {\n  font-size: 14px;\n  margin-top: 5px;\n}\n\n#connection-status {\n  text-align: center;\n  padding: 8px;\n  background: rgba(0,0,0,0.3);\n  border-radius: 4px;\n  font-size: 12px;\n}',
+        javascript: 'const cryptoPairs = ["BTC", "ETH", "ADA", "SOL", "MATIC", "AVAX"];\nconst prices = {};\n\nfunction generateRandomPrice(base = 50000) {\n  return (base + (Math.random() - 0.5) * base * 0.1).toFixed(2);\n}\n\nfunction updatePrices() {\n  cryptoPairs.forEach(symbol => {\n    const oldPrice = prices[symbol]?.price || generateRandomPrice();\n    const newPrice = parseFloat(oldPrice) + (Math.random() - 0.5) * 100;\n    const change = ((newPrice - oldPrice) / oldPrice * 100);\n    \n    prices[symbol] = {\n      price: newPrice.toFixed(2),\n      change: change.toFixed(2),\n      rising: change > 0\n    };\n  });\n  renderPrices();\n}\n\nfunction renderPrices() {\n  const grid = document.getElementById("price-grid");\n  grid.innerHTML = cryptoPairs.map(symbol => {\n    const data = prices[symbol];\n    return `\n      <div class="price-card ${data.rising ? "rising" : "falling"}">\n        <div class="crypto-symbol">${symbol}/USD</div>\n        <div class="crypto-price">$${data.price}</div>\n        <div class="price-change">\n          ${data.rising ? "+" : ""}${data.change}%\n        </div>\n      </div>\n    `;\n  }).join("");\n}\n\n// Initialize prices\ncryptoPairs.forEach(symbol => {\n  prices[symbol] = {\n    price: generateRandomPrice(Math.random() * 50000 + 1000),\n    change: "0.00",\n    rising: true\n  };\n});\n\ndocument.getElementById("connection-status").textContent = "Connected - Live Data";\nrenderPrices();\nsetInterval(updatePrices, 2000);'
+      }
+    ]
   },
   {
     id: 3,
@@ -33,7 +54,17 @@ const projects = [
     tech: ['Python', 'TensorFlow', 'FastAPI', 'GitHub API', 'PostgreSQL'],
     github: 'https://github.com/isiahgriffin/ai-code-reviewer',
     demo: 'https://codereview.isiahgriffin.dev',
-    featured: true
+    featured: true,
+    codeExamples: [
+      {
+        title: 'Code Quality Analyzer',
+        description: 'AI-powered code analysis with real-time suggestions',
+        language: 'javascript' as const,
+        html: '<div id="code-analyzer">\n  <h3>AI Code Review Assistant</h3>\n  <textarea id="code-input" placeholder="Paste your JavaScript code here..."></textarea>\n  <button id="analyze-btn">Analyze Code</button>\n  <div id="analysis-results"></div>\n</div>',
+        css: '#code-analyzer {\n  padding: 20px;\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  color: white;\n  border-radius: 8px;\n  max-width: 600px;\n}\n\n#code-input {\n  width: 100%;\n  height: 150px;\n  background: rgba(0,0,0,0.3);\n  border: 1px solid rgba(255,255,255,0.2);\n  border-radius: 4px;\n  color: white;\n  padding: 10px;\n  font-family: "Monaco", monospace;\n  font-size: 14px;\n  margin: 10px 0;\n  resize: vertical;\n}\n\n#code-input::placeholder {\n  color: rgba(255,255,255,0.6);\n}\n\n#analyze-btn {\n  background: rgba(255,255,255,0.2);\n  border: none;\n  padding: 10px 20px;\n  border-radius: 4px;\n  color: white;\n  cursor: pointer;\n  margin: 10px 0;\n}\n\n#analyze-btn:hover {\n  background: rgba(255,255,255,0.3);\n}\n\n.suggestion {\n  background: rgba(255,255,255,0.1);\n  padding: 12px;\n  margin: 8px 0;\n  border-radius: 4px;\n  border-left: 4px solid;\n}\n\n.suggestion.error { border-left-color: #ff4757; }\n.suggestion.warning { border-left-color: #ffaa00; }\n.suggestion.info { border-left-color: #00aaff; }\n.suggestion.success { border-left-color: #00ff88; }\n\n.suggestion-type {\n  font-weight: bold;\n  font-size: 12px;\n  text-transform: uppercase;\n  margin-bottom: 5px;\n}\n\n.suggestion-message {\n  margin-bottom: 5px;\n}\n\n.suggestion-fix {\n  font-family: "Monaco", monospace;\n  background: rgba(0,0,0,0.3);\n  padding: 5px;\n  border-radius: 3px;\n  font-size: 12px;\n}',
+        javascript: 'function analyzeCode(code) {\n  const suggestions = [];\n  \n  // Check for common issues\n  if (code.includes("var ")) {\n    suggestions.push({\n      type: "warning",\n      message: "Consider using \\"let\\" or \\"const\\" instead of \\"var\\"",\n      fix: "Replace var with let or const for better scoping"\n    });\n  }\n  \n  if (code.includes("==") && !code.includes("===")) {\n    suggestions.push({\n      type: "error", \n      message: "Use strict equality (===) instead of loose equality (==)",\n      fix: "Replace == with === for type-safe comparisons"\n    });\n  }\n  \n  if (!code.includes("function") && !code.includes("=>") && !code.includes("class")) {\n    suggestions.push({\n      type: "info",\n      message: "Consider organizing code into functions for better maintainability",\n      fix: "Break code into smaller, reusable functions"\n    });\n  }\n  \n  if (code.length > 500) {\n    suggestions.push({\n      type: "warning",\n      message: "Large code block detected - consider splitting into smaller modules",\n      fix: "Extract related functionality into separate modules"\n    });\n  }\n  \n  if (!suggestions.length) {\n    suggestions.push({\n      type: "success",\n      message: "Great! No major issues detected in your code",\n      fix: "Code looks clean and follows good practices"\n    });\n  }\n  \n  return suggestions;\n}\n\nfunction renderSuggestions(suggestions) {\n  const container = document.getElementById("analysis-results");\n  container.innerHTML = suggestions.map(suggestion => `\n    <div class="suggestion ${suggestion.type}">\n      <div class="suggestion-type">${suggestion.type}</div>\n      <div class="suggestion-message">${suggestion.message}</div>\n      <div class="suggestion-fix">${suggestion.fix}</div>\n    </div>\n  `).join("");\n}\n\ndocument.getElementById("analyze-btn").addEventListener("click", () => {\n  const code = document.getElementById("code-input").value;\n  if (!code.trim()) {\n    alert("Please enter some code to analyze!");\n    return;\n  }\n  const suggestions = analyzeCode(code);\n  renderSuggestions(suggestions);\n});\n\n// Pre-fill with example code\ndocument.getElementById("code-input").value = `var name = "John";\nif (age == 18) {\n  console.log("Welcome " + name);\n}`;\n\n// Auto-analyze the example\ndocument.getElementById("analyze-btn").click();'
+      }
+    ]
   },
   {
     id: 4,
@@ -149,6 +180,12 @@ const projects = [
                 </a>
               </Button>
                 </div>
+                {/* Code Playground */}
+                {project.codeExamples && (
+                  <div className="mt-6 pt-6 border-t border-border/50">
+                    <CodePlayground examples={project.codeExamples} />
+                  </div>
+                )}
               </CardContent>
             </Card>
           ))}
