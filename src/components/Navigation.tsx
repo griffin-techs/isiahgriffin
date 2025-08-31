@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Calendar } from 'lucide-react';
+import BookCallDialog from '@/components/BookCallDialog';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +13,7 @@ const Navigation = () => {
       setScrolled(window.scrollY > 50);
       
       // Check active section
-      const sections = ['hero', 'about', 'projects', 'skills', 'experience', 'contact'];
+      const sections = ['hero', 'about', 'projects', 'skills', 'experience', 'booking', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -73,13 +74,15 @@ const Navigation = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button 
-              variant="outline" 
-              onClick={() => scrollToSection('#contact')}
-              className="hover-glow border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-            >
-              Let's Talk
-            </Button>
+            <BookCallDialog>
+              <Button 
+                variant="outline" 
+                className="hover-glow border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              >
+                <Calendar className="w-4 h-4 mr-2" />
+                Book a Call
+              </Button>
+            </BookCallDialog>
           </div>
 
           {/* Mobile Menu Button */}
@@ -107,13 +110,15 @@ const Navigation = () => {
                 {item.name}
               </button>
             ))}
-            <Button 
-              variant="outline" 
-              onClick={() => scrollToSection('#contact')}
-              className="w-full mt-4 hover-glow border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-            >
-              Let's Talk
-            </Button>
+            <BookCallDialog>
+              <Button 
+                variant="outline" 
+                className="w-full mt-4 hover-glow border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              >
+                <Calendar className="w-4 h-4 mr-2" />
+                Book a Call
+              </Button>
+            </BookCallDialog>
           </div>
         )}
       </div>
