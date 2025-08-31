@@ -8,6 +8,7 @@ import About from '@/components/About';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import Experience from '@/components/Experience';
+import BookingSection from '@/components/BookingSection';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import LoadingScreen from '@/components/LoadingScreen';
@@ -54,6 +55,9 @@ const Index = () => {
         </div>
         <div data-aos="fade-up" data-aos-delay="100">
           <Experience />
+        </div>
+        <div data-aos="fade-up" data-aos-delay="150">
+          <BookingSection />
         </div>
         <div data-aos="fade-up" data-aos-delay="200">
           <Testimonials />

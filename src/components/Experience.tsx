@@ -6,10 +6,27 @@ const Experience = () => {
 const experiences = [
   {
     type: 'work',
+    title: 'Software Developer - Intern',
+    company: 'Telenor Maritime',
+    location: 'Remote',
+    period: '2024 - Present',
+    description: 'Developing innovative maritime communication solutions and satellite connectivity platforms. Working on next-generation IoT systems for vessel tracking and fleet management.',
+    technologies: ['React', 'Node.js', 'TypeScript', 'PostgreSQL', 'Docker', 'Azure', 'IoT'],
+    achievements: [
+      'Built real-time vessel tracking dashboard',
+      'Implemented satellite communication protocols',
+      'Developed IoT data processing pipelines',
+      'Created maritime fleet management system'
+    ],
+    image: '/src/assets/profile-picture.jpg',
+    companyLogo: 'https://www.telenormaritime.com/wp-content/uploads/2021/03/TM_logo_black.png'
+  },
+  {
+    type: 'work',
     title: 'Principal Software Engineer',
     company: 'CloudScale Technologies',
     location: 'Seattle, WA',
-    period: '2023 - Present',
+    period: '2023 - 2024',
     description: 'Architecting next-generation cloud infrastructure and leading a team of 12 engineers. Spearheading AI/ML integration initiatives and enterprise-scale system design.',
     technologies: ['Kubernetes', 'Go', 'Python', 'AWS', 'Terraform', 'GraphQL'],
     achievements: [
@@ -166,7 +183,21 @@ const education = [
                     
                     <div className="space-y-1">
                       <div className="flex items-center gap-2 text-foreground font-medium">
+                        {(item as any).companyLogo && (
+                          <img 
+                            src={(item as any).companyLogo} 
+                            alt={`${item.company} logo`}
+                            className="w-6 h-6 object-contain"
+                          />
+                        )}
                         <span>{item.company}</span>
+                        {(item as any).image && (
+                          <img 
+                            src={(item as any).image} 
+                            alt="Profile"
+                            className="w-8 h-8 rounded-full object-cover ml-2 border-2 border-primary/20"
+                          />
+                        )}
                       </div>
                       <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
                         <div className="flex items-center gap-1">
