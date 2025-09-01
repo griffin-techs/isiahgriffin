@@ -16,7 +16,7 @@ const About = () => {
   return (
     <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16" data-aos="fade-down" data-aos-duration="800">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             About <span className="text-gradient">Isiah</span>
           </h2>
@@ -27,7 +27,7 @@ const About = () => {
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Profile Picture */}
-          <div className="order-2 md:order-1 flex justify-center md:justify-start">
+          <div className="order-2 md:order-1 flex justify-center md:justify-start" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-30"></div>
               <img 
@@ -40,7 +40,7 @@ const About = () => {
 
           {/* Content */}
           <div className="order-1 md:order-2 space-y-6">
-            <Card className="p-6 glass-effect border-border/50">
+            <Card className="p-6 glass-effect border-border/50" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
               <h3 className="text-2xl font-semibold mb-4 text-gradient">
                 My Journey
               </h3>
@@ -65,7 +65,7 @@ const About = () => {
             </Card>
 
             {/* Quick Skills */}
-            <Card className="p-6 glass-effect border-border/50">
+            <Card className="p-6 glass-effect border-border/50" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">
               <h3 className="text-xl font-semibold mb-4 text-gradient">
                 Core Technologies
               </h3>
@@ -73,8 +73,10 @@ const About = () => {
                 {skills.map((skill, index) => (
                   <div 
                     key={skill}
-                    className="flex items-center gap-2 text-sm text-muted-foreground"
+                    className="flex items-center gap-2 text-sm text-muted-foreground animate-fade-in"
                     style={{ animationDelay: `${index * 0.1}s` }}
+                    data-aos="zoom-in"
+                    data-aos-delay={600 + (index * 50)}
                   >
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
                     {skill}

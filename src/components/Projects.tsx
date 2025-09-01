@@ -121,7 +121,7 @@ const projects = [
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16" data-aos="fade-down" data-aos-duration="800">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             Featured <span className="text-gradient">Projects</span>
           </h2>
@@ -132,8 +132,14 @@ const projects = [
 
         {/* Featured Projects */}
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
-          {projects.filter(project => project.featured).map((project) => (
-            <Card key={project.id} className="group overflow-hidden glass-effect border-border/50 hover-glow">
+          {projects.filter(project => project.featured).map((project, index) => (
+            <Card 
+              key={project.id} 
+              className="group overflow-hidden glass-effect border-border/50 hover-glow"
+              data-aos="zoom-in-up"
+              data-aos-duration="1000"
+              data-aos-delay={index * 200}
+            >
               <div className="aspect-video overflow-hidden">
                 <img 
                   src={project.image}
@@ -193,8 +199,14 @@ const projects = [
 
         {/* Other Projects */}
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {projects.filter(project => !project.featured).map((project) => (
-            <Card key={project.id} className="group overflow-hidden glass-effect border-border/50 hover-glow">
+          {projects.filter(project => !project.featured).map((project, index) => (
+            <Card 
+              key={project.id} 
+              className="group overflow-hidden glass-effect border-border/50 hover-glow"
+              data-aos="flip-left"
+              data-aos-duration="800"
+              data-aos-delay={index * 100}
+            >
               <div className="aspect-video overflow-hidden">
                 <img 
                   src={project.image}
