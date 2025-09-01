@@ -14,17 +14,14 @@ export default function ThemeToggle() {
     
     setIsDark(shouldBeDark);
     document.documentElement.classList.toggle('light', !shouldBeDark);
-    
-    // Add smooth transition for theme changes
-    document.documentElement.style.setProperty('--transition-theme', 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)');
   }, []);
 
   const toggleTheme = () => {
     setIsTransitioning(true);
     const newTheme = !isDark;
     
-    // Add transition class to body for smooth theme switching
-    document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+    // Add transition to body for smooth theme switching
+    document.body.style.transition = 'background-color 0.4s ease, color 0.4s ease';
     
     setIsDark(newTheme);
     localStorage.setItem('theme', newTheme ? 'dark' : 'light');
@@ -34,7 +31,7 @@ export default function ThemeToggle() {
     setTimeout(() => {
       setIsTransitioning(false);
       document.body.style.transition = '';
-    }, 300);
+    }, 400);
   };
 
   return (
@@ -44,29 +41,30 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       disabled={isTransitioning}
       className={cn(
-        "fixed top-4 right-4 z-50 glass-effect border-border/50",
-        "hover:bg-accent/10 hover:border-accent/30 hover:scale-105",
-        "transition-all duration-300 ease-out",
-        "backdrop-blur-sm shadow-elegant",
-        isTransitioning && "scale-95"
+        "fixed top-6 right-6 z-[9999] glass-effect border-border/30",
+        "hover:bg-accent/20 hover:border-accent/50 hover:scale-110",
+        "transition-all duration-300 ease-out shadow-elegant",
+        "backdrop-blur-md border-2",
+        isTransitioning && "scale-95 opacity-80"
       )}
       title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       <div className="relative w-4 h-4">
         <Sun 
           className={cn(
-            "absolute inset-0 transition-all duration-300 ease-out",
+            "absolute inset-0 transition-all duration-500 ease-out text-amber-500",
             isDark 
               ? "opacity-100 rotate-0 scale-100" 
-              : "opacity-0 rotate-90 scale-75"
+              : "opacity-0 rotate-180 scale-50"
           )} 
         />
         <Moon 
           className={cn(
-            "absolute inset-0 transition-all duration-300 ease-out",
+            "absolute inset-0 transition-all duration-500 ease-out text-blue-400",
             !isDark 
               ? "opacity-100 rotate-0 scale-100" 
-              : "opacity-0 -rotate-90 scale-75"
+              : "opacity-0 -rotate-180 scale-50"
           )} 
         />
       </div>
