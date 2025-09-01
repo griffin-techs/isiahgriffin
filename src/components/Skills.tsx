@@ -78,7 +78,6 @@ const Skills = () => {
             <Card 
               key={category.title} 
               className="glass-effect border-border/50 hover-glow"
-              style={{ animationDelay: `${categoryIndex * 0.1}s` }}
             >
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center gap-3 text-gradient">
@@ -102,9 +101,6 @@ const Skills = () => {
                     <Progress 
                       value={skill.level} 
                       className="h-2"
-                      style={{ 
-                        animationDelay: `${(categoryIndex * 4 + skillIndex) * 0.1}s` 
-                      }}
                     />
                   </div>
                 ))}
@@ -129,7 +125,6 @@ const Skills = () => {
                 <div
                   key={tool}
                   className="px-4 py-2 bg-surface-hover rounded-full text-sm font-medium text-foreground border border-border/50 hover:border-primary/50 transition-colors duration-200"
-                  style={{ animationDelay: `${index * 0.05}s` }}
                 >
                   {tool}
                 </div>
