@@ -10,6 +10,7 @@ interface Message {
   content: string;
   isBot: boolean;
   timestamp: Date;
+  isTyping?: boolean;
 }
 
 const quizQuestions = [
@@ -95,6 +96,26 @@ function generateBotResponse(message: string): string {
   return "I can help you learn about Isiah's projects, skills, experience, and how to contact him. Try asking about his technical skills, recent projects, or professional background!";
 }
 
+function TypingMessage({ text, onComplete }: { text: string; onComplete: () => void }) {
+  const [displayedText, setDisplayedText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentIndex < text.length) {
+      const timer = setTimeout(() => {
+        setDisplayedText(prev => prev + text[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, 30); // Typing speed
+      
+      return () => clearTimeout(timer);
+    } else if (currentIndex === text.length && displayedText.length === text.length) {
+      onComplete();
+    }
+  }, [currentIndex, text, displayedText.length, onComplete]);
+
+  return <span>{displayedText}</span>;
+}
+
 export default function AIChatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
@@ -108,6 +129,7 @@ export default function AIChatbot() {
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [showQuiz, setShowQuiz] = useState(true);
+  const [typingMessageId, setTypingMessageId] = useState<string | null>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -133,14 +155,17 @@ export default function AIChatbot() {
       timestamp: new Date()
     };
 
+    const botResponseId = (Date.now() + 1).toString();
     const botResponse: Message = {
-      id: (Date.now() + 1).toString(),
+      id: botResponseId,
       content: question.answer,
       isBot: true,
-      timestamp: new Date()
+      timestamp: new Date(),
+      isTyping: true
     };
 
     setMessages(prev => [...prev, userMessage, botResponse]);
+    setTypingMessageId(botResponseId);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -157,21 +182,34 @@ export default function AIChatbot() {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = inputValue;
     setInputValue('');
     setIsTyping(true);
 
     // Simulate bot thinking time
     setTimeout(() => {
+      const botResponseId = (Date.now() + 1).toString();
       const botResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        content: generateBotResponse(inputValue),
+        id: botResponseId,
+        content: generateBotResponse(currentInput),
         isBot: true,
-        timestamp: new Date()
+        timestamp: new Date(),
+        isTyping: true
       };
 
       setMessages(prev => [...prev, botResponse]);
+      setTypingMessageId(botResponseId);
       setIsTyping(false);
     }, 1000 + Math.random() * 1000);
+  };
+
+  const handleTypingComplete = (messageId: string) => {
+    setMessages(prev => 
+      prev.map(msg => 
+        msg.id === messageId ? { ...msg, isTyping: false } : msg
+      )
+    );
+    setTypingMessageId(null);
   };
 
   return (
@@ -234,7 +272,14 @@ export default function AIChatbot() {
                         : "bg-primary text-primary-foreground ml-auto"
                     )}
                   >
-                    {message.content}
+                    {message.isBot && message.isTyping ? (
+                      <TypingMessage 
+                        text={message.content} 
+                        onComplete={() => handleTypingComplete(message.id)}
+                      />
+                    ) : (
+                      message.content
+                    )}
                   </div>
                   {!message.isBot && (
                     <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-1">
