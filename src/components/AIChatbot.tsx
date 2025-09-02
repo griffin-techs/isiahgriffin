@@ -12,11 +12,39 @@ interface Message {
   timestamp: Date;
 }
 
+const quizQuestions = [
+  {
+    id: 'q1',
+    question: '🎯 What\'s Isiah\'s coding philosophy?',
+    answer: 'Isiah believes in writing clean, maintainable code that solves real problems. He focuses on user experience first, then builds robust backend systems to support it. His motto is "Code with purpose, design with empathy."'
+  },
+  {
+    id: 'q2',
+    question: '🚀 What was his most challenging project?',
+    answer: 'His most challenging project was building a real-time trading platform that handled thousands of concurrent users. It required advanced WebSocket architecture, complex state management, and bulletproof error handling. The project taught him the importance of scalable architecture.'
+  },
+  {
+    id: 'q3',
+    question: '⚡ What\'s his superpower as a developer?',
+    answer: 'Isiah\'s superpower is his ability to translate complex business requirements into elegant technical solutions. He excels at bridging the gap between stakeholders and development teams, ensuring everyone stays aligned throughout the project lifecycle.'
+  },
+  {
+    id: 'q4',
+    question: '🎨 How does he approach UI/UX design?',
+    answer: 'Isiah approaches design with a mobile-first mindset and accessibility at the core. He believes great design is invisible - users should accomplish their goals effortlessly. He often prototypes in Figma before coding to validate user flows.'
+  },
+  {
+    id: 'q5',
+    question: '📚 What\'s he learning right now?',
+    answer: 'Currently diving deep into AI/ML integration with web applications, exploring edge computing, and mastering advanced TypeScript patterns. He\'s also experimenting with Web3 technologies and their practical applications in traditional web apps.'
+  }
+];
+
 const botResponses = {
   greeting: [
-    "Hi! I'm Isiah's AI assistant. I can help you learn about his work, skills, and projects. What would you like to know?",
-    "Hello! I'm here to help you explore Isiah's portfolio. Ask me about his projects, experience, or skills!",
-    "Hey there! I can answer questions about Isiah's background, projects, and expertise. How can I help?"
+    "Hi! I'm Isiah's AI assistant. I can help you learn about his work, skills, and projects. Try clicking on the quiz questions below to discover more about him!",
+    "Hello! I'm here to help you explore Isiah's portfolio. Check out the quiz questions below or ask me anything about his projects, experience, or skills!",
+    "Hey there! I can answer questions about Isiah's background, projects, and expertise. Click on any quiz question below or ask me directly!"
   ],
   projects: [
     "Isiah has worked on various full-stack projects including e-commerce platforms, real-time applications, and modern web apps using React, Node.js, and TypeScript. He's particularly skilled in creating scalable, user-friendly applications.",
@@ -79,6 +107,7 @@ export default function AIChatbot() {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [showQuiz, setShowQuiz] = useState(true);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -94,9 +123,31 @@ export default function AIChatbot() {
     scrollToBottom();
   }, [messages]);
 
+  const handleQuizClick = (question: typeof quizQuestions[0]) => {
+    setShowQuiz(false);
+    
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      content: question.question,
+      isBot: false,
+      timestamp: new Date()
+    };
+
+    const botResponse: Message = {
+      id: (Date.now() + 1).toString(),
+      content: question.answer,
+      isBot: true,
+      timestamp: new Date()
+    };
+
+    setMessages(prev => [...prev, userMessage, botResponse]);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
+
+    setShowQuiz(false);
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -192,6 +243,26 @@ export default function AIChatbot() {
                   )}
                 </div>
               ))}
+
+              {/* Quiz Questions */}
+              {showQuiz && messages.length === 1 && (
+                <div className="space-y-2 mt-4">
+                  <div className="text-xs text-muted-foreground text-center mb-2">
+                    👆 Click a question to learn more about Isiah
+                  </div>
+                  {quizQuestions.map((quiz) => (
+                    <Button
+                      key={quiz.id}
+                      variant="outline"
+                      size="sm"
+                      className="w-full text-left justify-start h-auto py-2 px-3 text-xs hover:bg-accent/10"
+                      onClick={() => handleQuizClick(quiz)}
+                    >
+                      {quiz.question}
+                    </Button>
+                  ))}
+                </div>
+              )}
               
               {isTyping && (
                 <div className="flex gap-2 justify-start">
