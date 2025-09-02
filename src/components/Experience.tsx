@@ -159,10 +159,10 @@ const education = [
                 index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'
               }`}>
                 {/* Timeline Dot */}
-                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background transform md:-translate-x-1/2 z-10 shadow-glow"></div>
+                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background transform md:-translate-x-1/2 z-10"></div>
 
                 {/* Content Card */}
-                <Card className={`glass-effect border-border/50 hover-glow ml-12 md:ml-0 w-full ${
+                <Card className={`glass-effect border-border/50 ml-12 md:ml-0 w-full ${
                   index % 2 === 0 ? 'md:w-5/12 md:mr-auto md:pr-8' : 'md:w-5/12 md:ml-auto md:pl-8'
                 }`}>
                   <CardHeader className="pb-3">
