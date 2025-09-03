@@ -19,6 +19,7 @@ import Testimonials from '@/components/Testimonials';
 import TechStack from '@/components/TechStack';
 import PWAInstallPrompt from '@/components/PWAInstallPrompt';
 import AIChatbot from '@/components/AIChatbot';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const Index = () => {
   useEffect(() => {
@@ -71,6 +72,7 @@ const Index = () => {
       </main>
       <PWAInstallPrompt />
       <AIChatbot />
+      <ScrollToTop />
     </>
   );
 };
